@@ -26,7 +26,6 @@ body {
 }
 .navbar-link {
   text-decoration: none;
-  font-weight: 700;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   margin-right: 1rem;
@@ -72,7 +71,7 @@ body {
 }
 .input-section_title {
   color: white;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -80,7 +79,8 @@ body {
 
 .input-section_money {
   color: white;
-  font-weight: 800;
+  font-weight: 700;
+  margin-top: 0.5rem;
   padding: 0;
   font-size: 2rem;
   text-transform: uppercase;
@@ -116,6 +116,12 @@ body {
   font-size: 1.5rem;
   color: white;
 }
+.addtransaction-label {
+  color: white !important;
+}
+.addtransaction-input {
+  width: 80% !important;
+}
 .add-transactions {
   padding: 10px 0;
 }
@@ -125,21 +131,35 @@ body {
 form {
   padding: 0.25rem 0;
 }
+.form-section {
+  width: 35%;
+  margin: 7rem auto;
+}
 .form-control {
   display: flex;
   flex-direction: column;
 }
 .form-control label {
-  color: #fff;
+  color: black;
   padding: 5px 0;
-  font-weight: 700;
+  font-weight: 400;
 }
 .form-control input {
   padding: 5px 10px;
   margin-bottom: 1rem;
   font-size: 1rem;
-  width: 80%;
+  width: 100%;
   font-family: inherit;
+}
+.form-input-btn {
+  padding: 0.5rem 2rem;
+  align-self: flex-start;
+  font-size: 1rem;
+  background-color: rgb(0, 21, 41);
+  color: white;
+}
+.form-section-login {
+  font-size: 0.7rem;
 }
 .btn {
   background-color: white;
@@ -178,6 +198,13 @@ form {
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .form-section {
+    width: 50%;
+    margin: 5rem auto;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .main-container {
     flex-direction: column;
@@ -195,5 +222,12 @@ form {
   .transaction-list_item {
     width: 80%;
     margin-left: 0rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form-section {
+    width: 70%;
+    margin: 3rem;
   }
 }

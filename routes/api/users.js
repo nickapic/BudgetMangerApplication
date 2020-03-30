@@ -11,7 +11,7 @@ const bcrypt = require("bcryptjs");
 //@desc     Register User
 //@access   Public (So anyone can access this )
 router.post(
-  "/register",
+  "/",
   [
     check("name", "Name is required")
       .not()
