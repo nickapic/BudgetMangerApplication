@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-const Transaction = require("../../models/transaction");
-
+const Transaction = require("../../models/Transaction");
 const auth = require("../../middleware/auth");
 
 //@route    POST api/transaction
