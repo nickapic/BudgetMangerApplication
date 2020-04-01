@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTransaction } from "../Redux/actions/transaction";
 
-const AddItem = ({ addTransaction }) => {
+const AddItem = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
+  const dispatch = useDispatch();
 
   const onSubmit = e => {
     e.preventDefault();
@@ -12,7 +13,7 @@ const AddItem = ({ addTransaction }) => {
       text,
       amount: +amount
     };
-    addTransaction(newTransaction);
+    dispatch(addTransaction(newTransaction));
     console.log(newTransaction);
     setText("");
     setAmount(0);
@@ -52,4 +53,4 @@ const AddItem = ({ addTransaction }) => {
     </div>
   );
 };
-export default connect(null, { addTransaction })(AddItem);
+export default AddItem;

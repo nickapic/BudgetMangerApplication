@@ -14,7 +14,7 @@ const TransactionList = ({
     <section className="transaction-list-section">
       <ul className="transaction-list_container">
         {transactions.map(transaction => (
-          <Transaction key={transaction.id} transaction={transaction} />
+          <Transaction key={transaction._id} transaction={transaction} />
         ))}
       </ul>
     </section>

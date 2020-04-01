@@ -10,6 +10,8 @@ import {
 export const getTransactions = () => async dispatch => {
   try {
     const res = await axios.get("/api/v1/transaction");
+    console.log("error occured in the get function");
+
     console.log(res);
     dispatch({
       type: GET_TRANSACTIONS,
@@ -22,7 +24,9 @@ export const getTransactions = () => async dispatch => {
     });
   }
 };
+
 // Delete post
+
 export const deleteTransaction = id => async dispatch => {
   try {
     await axios.delete(`/api/v1/transaction/${id}`);
@@ -34,6 +38,7 @@ export const deleteTransaction = id => async dispatch => {
 
     dispatch(setAlert("Transaction Removed", "success"));
   } catch (err) {
+    console.log("error occured in the delete function");
     dispatch({
       type: TRANSACTION_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
