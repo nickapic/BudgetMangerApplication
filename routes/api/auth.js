@@ -68,8 +68,6 @@ router.post(
           res.json({ token });
         }
       );
-
-      console.log(req.body);
     } catch (err) {
       console.error(err);
       return res.status(500).send("Server Error");

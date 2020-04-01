@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Transaction } from "./transaction";
+import { getTransactions } from "../Redux/actions/transaction";
+import { connect } from "react-redux";
 
-export const TransactionList = () => {
-  const transactions = [
-    {
-      text: "some money ",
-      amount: 123
-    }
-  ];
+const TransactionList = ({
+  getTransactions,
+  transaction: { transactions, loading }
+}) => {
+  useEffect(() => {
+    getTransactions();
+  }, [getTransactions]);
   return (
     <section className="transaction-list-section">
       <ul className="transaction-list_container">
@@ -18,3 +20,8 @@ export const TransactionList = () => {
     </section>
   );
 };
+
+const mapStateToProps = state => ({
+  transaction: state.transaction
+});
+export default connect(mapStateToProps, { getTransactions })(TransactionList);

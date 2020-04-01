@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addTransaction } from "../Redux/actions/transaction";
 
-export const AddItem = () => {
+const AddItem = ({ addTransaction }) => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
@@ -10,6 +12,7 @@ export const AddItem = () => {
       text,
       amount: +amount
     };
+    addTransaction(newTransaction);
     console.log(newTransaction);
     setText("");
     setAmount(0);
@@ -49,3 +52,4 @@ export const AddItem = () => {
     </div>
   );
 };
+export default connect(null, { addTransaction })(AddItem);

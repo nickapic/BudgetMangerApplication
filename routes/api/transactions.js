@@ -39,20 +39,18 @@ router.post(
       console.error(err.message);
       return res.status(500).send("Server Error has Occured");
     }
-
-    res.send("Transaction Route");
   }
 );
 
 //@route GET api/transactions
 //@desc Get all transacions for the current user
 //@acess Private
-router.get("/", auth, async (req, res) => {
+router.get("/", [auth], async (req, res) => {
   try {
-    const transacions = await Transaction.find({ user: req.user.id }).sort({
+    const transactions = await Transaction.find({ user: req.user.id }).sort({
       date: -1
     });
-    res.json(transacions);
+    res.json(transactions);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

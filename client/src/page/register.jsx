@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../Redux/actions/alert";
+import { register } from "../Redux/actions/auth";
 
-export const Register = () => {
+import PropTypes from "prop-types";
+
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,11 +22,14 @@ export const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      setAlert("Passwords do not match", "danger");
     } else {
-      console.log("Success sir");
+      register({ name, email, password });
     }
   };
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="form-section" onSubmit={e => onSubmit(e)}>
       <h2 className="form-section_label">Register here</h2>
@@ -37,7 +45,7 @@ export const Register = () => {
             placeholder="Full name here"
             value={name}
             onChange={e => onChange(e)}
-            required
+            // required
           />
         </div>
         <div className="form-control">
@@ -51,7 +59,7 @@ export const Register = () => {
             placeholder="Your Email here"
             onChange={e => onChange(e)}
             value={email}
-            required
+            // required
           />
         </div>
         <div className="form-control">
@@ -65,7 +73,7 @@ export const Register = () => {
             placeholder="Enter your password here"
             onChange={e => onChange(e)}
             value={password}
-            required
+            // required
           />
         </div>
         <div className="form-control">
@@ -79,7 +87,7 @@ export const Register = () => {
             onChange={e => onChange(e)}
             placeholder="Confirm your password"
             value={password2}
-            required
+            // required
           />
         </div>
         <input type="submit" className="form-input-btn" value="Register" />
@@ -90,3 +98,14 @@ export const Register = () => {
     </div>
   );
 };
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
