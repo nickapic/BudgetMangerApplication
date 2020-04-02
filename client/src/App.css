@@ -1,3 +1,7 @@
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -34,6 +38,9 @@ body {
   background-color: #fff;
   border: none;
 }
+.hide_onMobile {
+  padding-left: 6px;
+}
 .navbar-link:hover {
   background-color: black;
   color: white;
@@ -51,7 +58,7 @@ body {
 .transaction-list_item {
   display: flex;
   width: 30rem;
-  padding: 15px 20px;
+  padding: 15px;
   background-color: rgb(0, 21, 41);
   margin: 10px auto;
   justify-content: space-between;
@@ -230,7 +237,7 @@ form {
   color: #fff;
   font-size: 10px;
   line-height: 20px;
-  padding: 15px 10px;
+  padding: 18px 10px;
   position: absolute;
   top: 50%;
   text-transform: uppercase;
@@ -242,6 +249,9 @@ form {
 @media only screen and (max-width: 1200px) {
   html {
     font-size: 80%;
+  }
+  .delete-btn {
+    padding: 14px 15px;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -271,10 +281,14 @@ form {
   .main-container {
     flex-direction: column;
   }
+  .hide_onMobile {
+    display: none;
+  }
   .input-section {
     width: 100%;
     overflow: hidden;
-    padding: 3rem 2rem;
+    padding: 3rem 0rem;
+    padding-left: 2rem;
     min-height: fit-content;
   }
   .transaction-list-section {
@@ -285,9 +299,15 @@ form {
     width: 80%;
     margin-left: 0rem;
   }
+  .delete-btn {
+    padding: 14px 15px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  .input-section {
+    width: 95%;
+  }
   .form-section {
     width: 70%;
     margin: 3rem;

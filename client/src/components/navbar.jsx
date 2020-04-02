@@ -8,17 +8,22 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const unAuthorizedLinks = (
     <div className="navbar">
       <Link to="/login" className="navbar-link">
-        Log in
+        <i class="fas fa-sign-in-alt"></i>
+        <span className="hide_onMobile">Log in</span>
+        {"     "}
       </Link>
       <Link to="/signup" className="navbar-link">
-        Sign up
+        <i class="fas fa-user-plus"></i> {"     "}
+        <span className="hide_onMobile">Sign Up</span>{" "}
       </Link>
     </div>
   );
   const AuthorisedLinks = (
     <div className="navbar">
       <a onClick={logout} href="#!" className="navbar-link">
-        Logout{" "}
+        <i class="fas fa-sign-out-alt"></i>
+        {"     "}
+        <span className="hide_onMobile">Logout</span>
       </a>
     </div>
   );

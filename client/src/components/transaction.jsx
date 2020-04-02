@@ -14,7 +14,7 @@ export const Transaction = ({ transaction }) => {
         onClick={() => dispatch(deleteTransaction(_id))}
         className="delete-btn"
       >
-        X
+        <i class="fas fa-trash"></i>
       </button>
     </li>
   );
